@@ -1,7 +1,9 @@
 ﻿using Curso.api.Filters;
+using Curso.api.Infraestruture.Data;
 using Curso.api.Model;
 using Curso.api.Model.Usuarios;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -85,6 +87,11 @@ namespace Curso.api.Controllers
         [ValidacaoModelStateCustomizado]
         public IActionResult Registrar(RegistrarViewModelInput loginViewModelInput)
         {
+            var options=new DbContextOptionsBuilder<CursoDbContext>();
+            options.UseSqlServer("");
+
+            CursoDbContext conteudo=new CursoDbContext(options);
+
             return Created("", loginViewModelInput);
         }
     }

@@ -14,8 +14,6 @@ namespace Curso.api.Infraestruture.Data.Mappings
             builder.Property(p => p.Login);
             builder.Property(p => p.Senha);
             builder.Property(p => p.Email);
-
-            throw new System.NotImplementedException();
         }
     }
 }
