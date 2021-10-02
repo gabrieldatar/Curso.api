@@ -33,6 +33,10 @@ namespace Curso.api.Controllers
             //{
             //    return BadRequest(new ValidaCampoViweModelOutput(ModelState.SelectMany(sm=>sm.Value.Errors).Select(s=>s.ErrorMessage)));
             //}
+
+
+
+
             return Ok(loginViewModelInput);
         }
 
