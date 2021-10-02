@@ -35,3 +35,4 @@ C:\Workplace\Curso\Curso.api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.
 C:\Workplace\Curso\Curso.api\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Workplace\Curso\Curso.api\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Workplace\Curso\Curso.api\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Workplace\Curso\Curso.api\obj\Debug\net5.0\Curso.api.csproj.AssemblyReference.cache
