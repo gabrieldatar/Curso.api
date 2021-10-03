@@ -7,6 +7,8 @@ using Curso.api.Model.Usuarios;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Threading.Tasks;
+
 
 namespace Curso.api.Controllers
 {
@@ -46,11 +48,11 @@ namespace Curso.api.Controllers
         [HttpPost]
         [Route("logar")]
         [ValidacaoModelStateCustomizado]
-        public IActionResult Logar(LoginViewModelInput loginViewModelInput)
+        public async Task<IActionResult> Logar(LoginViewModelInput loginViewModelInput)
         {
-            Usuario usuario=_usuarioRepository.ObterUsuario(loginViewModelInput.Login);
+            var usuario = await _usuarioRepository.ObterUsuarioAsync(loginViewModelInput.Login);
 
-            if(usuario==null)
+            if (usuario==null)
             {
                 return BadRequest("Houve um erro ao tentar acessar.");
             }
@@ -66,26 +68,6 @@ namespace Curso.api.Controllers
                 Login = loginViewModelInput.Login,
                 Email = usuario.Email
             };
-
-            //var secret = Encoding.ASCII.GetBytes(_configuration.GetSection("JwtConfigurations:Secret").Value);
-            ////var secret = Encoding.ASCII.GetBytes(_configuration.GetSection("JwtConfigurations:Secret").Value);
-            //var symmetricSecurityKey = new SymmetricSecurityKey(secret);
-            //var securityTokenDescriptor = new SecurityTokenDescriptor
-            //{
-            //    Subject = new ClaimsIdentity(new Claim[]
-            //    {
-            //        new Claim(ClaimTypes.NameIdentifier, usuarioViewModelOutput.Codigo.ToString()),
-            //        new Claim(ClaimTypes.Name, usuarioViewModelOutput.Login.ToString()),
-            //        new Claim(ClaimTypes.Email, usuarioViewModelOutput.Email.ToString())
-            //    }),
-
-            //    Expires = DateTime.UtcNow.AddDays(1),
-            //    SigningCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256Signature)
-            //};
-
-            //var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
-            //var tokenGenerated = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
-            //var token= jwtSecurityTokenHandler.WriteToken(tokenGenerated);
 
             var token = _authenticationServices.GerarToken(usuarioViewModelOutput);
 
@@ -110,14 +92,6 @@ namespace Curso.api.Controllers
         [ValidacaoModelStateCustomizado]
         public IActionResult Registrar(RegistrarViewModelInput loginViewModelInput)
         {
-            
-
-            //var migracoesPendentes = contexto.Database.GetPendingMigrations();
-            //if (migracoesPendentes.Count() > 0)
-            //{
-            //    contexto.Database.Migrate();
-            //}
-
             var usuario = new Usuario();
             usuario.Login = loginViewModelInput.Login;
             usuario.Senha = loginViewModelInput.Senha;

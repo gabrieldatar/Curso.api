@@ -4,10 +4,24 @@
         <name>Curso.api</name>
     </assembly>
     <members>
+        <member name="M:Curso.api.Controllers.CursoController.Post(Curso.api.Model.Cursos.CursoViewModelInput)">
+            <summary>
+            
+            </summary>
+            <param name="cursoViewModelInput"></param>
+            <returns></returns>
+        </member>
         <member name="T:Curso.api.Controllers.UsuarioController">
             <summary>
             
             </summary>
+        </member>
+        <member name="M:Curso.api.Controllers.UsuarioController.#ctor(Curso.api.Business.Repositories.IUsuarioRepository,Curso.api.Configurations.IAuthenticationServices)">
+            <summary>
+            
+            </summary>
+            <param name="usuarioRepository"></param>
+            <param name="configuration"></param>
         </member>
         <member name="M:Curso.api.Controllers.UsuarioController.Logar(Curso.api.Model.Usuarios.LoginViewModelInput)">
             <summary>

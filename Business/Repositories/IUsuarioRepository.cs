@@ -1,4 +1,5 @@
 ﻿using Curso.api.Business.Entities;
+using System.Threading.Tasks;
 
 namespace Curso.api.Business.Repositories
 {
@@ -8,6 +9,6 @@ namespace Curso.api.Business.Repositories
 
         void Commit();
 
-        Usuario ObterUsuario(string login);
+        Task<Usuario> ObterUsuarioAsync(string login);
     }
 }

@@ -15,9 +15,12 @@ namespace Curso.api.Infraestruture.Data
         {
             modelBuilder.ApplyConfiguration(new CursoMapping());
             modelBuilder.ApplyConfiguration(new UsuarioMapping());
+
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Usuario> Usuario { get; set; }
+
+        public DbSet<Business.Entities.Curso> Curso { get; set; }
     }
 }
