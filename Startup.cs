@@ -1,8 +1,12 @@
+using Curso.api.Business.Repositories;
+using Curso.api.Infraestruture.Data;
+using Curso.api.Infraestruture.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -90,6 +94,12 @@ namespace Curso.api
                     ValidateAudience=false
                 };
             });
+
+            services.AddDbContext<CursoDbContext>(options=>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefautConnection"));
+            });
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
