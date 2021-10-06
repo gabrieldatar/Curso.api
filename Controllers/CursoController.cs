@@ -61,7 +61,7 @@ namespace Curso.api.Controllers
 
         [SwaggerResponse(statusCode: 200, description: "Sucesso ao obter curso", Type = typeof(CursoViewModelOutput))]
         [SwaggerResponse(statusCode: 401, description: "Não autorizado")]
-        [HttpPost]
+        [HttpGet]
         [Route("get")]
         public async Task<IActionResult> Get()
         {                       
